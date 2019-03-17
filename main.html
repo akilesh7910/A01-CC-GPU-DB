@@ -74,7 +74,7 @@
           {% endfor %}
         </select>
           <input type="hidden" name="current_processor" value="{{mygpu.name}}">
-          <input type="submit" id="myselect" value="compare" onclick='showmessage()'/>
+          <input type="submit" id="myselect" value="compare" onclick='showMessage()'/>
 
       </form>
     </td>
@@ -98,7 +98,7 @@
  <p style="text-align: center;">login to proceed</p>
 {% endif %}
 <script type="text/javascript">
-			function showmessage(){
+			function showMessage(){
 				alert("Make sure to select GPU from dropdown.");
 			}
 		</script>

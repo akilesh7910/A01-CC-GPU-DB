@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPU COMPARISON</title>
+</head>
+<body>
+<form >
+    <input type="submit" value="Back" name="cancel" align="right"/>
+</form>
+
+<table border=1>
+    <tr>
+        <th  colspan="6">GPU COMPARISON</th>
+    </tr>
+
+    <tr>
+        <td >NAME</td>
+        {% for gpu in gpu_arr %}
+        <td>{{ gpu.name }}</td>
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <td>GEOMETRY SHADER</td>
+        {% for gpu in gpu_arr %}
+        {% if gpu.geometryShader %}
+        <td><input name="" type="checkbox" checked disabled/></td>
+        {% else %}
+        <td><input name="" type="checkbox" disabled/></td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <td>TESSELATION SHADER</td>
+        {% for gpu in gpu_arr %}
+        {% if gpu.tesselationShader %}
+        <td><input name="" type="checkbox" checked disabled/></td>
+        {% else %}
+        <td><input name="" type="checkbox" disabled/></td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <td>SHADER INT16</td>
+        {% for gpu in gpu_arr %}
+        {% if gpu.shaderInt16 %}
+        <td><input name="" type="checkbox" checked disabled/></td>
+        {% else %}
+        <td><input name="" type="checkbox" disabled/></td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <td>SPARSE BINDING</td>
+        {% for gpu in gpu_arr %}
+        {% if gpu.sparseBinding %}
+        <td><input name="" type="checkbox" checked disabled/></td>
+        {% else %}
+        <td><input name="" type="checkbox" disabled/></td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <td>TEXTURE CompressionETC2</td>
+        {% for gpu in gpu_arr %}
+        {% if gpu.textureCompressionETC2 %}
+        <td><input name="" type="checkbox" checked disabled/></td>
+        {% else %}
+        <td><input name="" type="checkbox" disabled/></td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+    <tr>
+        <td>vertexPipelineStoresAndAtomic</td>
+        {% for gpu in gpu_arr %}
+        {% if gpu.vertexPipelineStoresAndAtomic %}
+        <td><input name="" type="checkbox" checked disabled/></td>
+        {% else %}
+        <td><input name="" type="checkbox" disabled/></td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+<br/>
+<h2>Add Contents<a href="/add_func">here</a></h2>
+<br/>
+
+<form method="get">
+
+{% if temp_geometryShader %}<input name="temp_geometryShader" type="checkbox" checked/>
+{% else %}<input name="temp_geometryShader" type="checkbox" />
+{% endif %}Geometry_Shader<br/>
+{% if temp_tesselationShader %}<input name="temp_tesselationShader" type="checkbox" checked/>
+{% else %}<input name="temp_tesselationShader" type="checkbox" />
+{% endif %}Tesselation_Shader<br/>
+{% if temp_shaderInt16 %}<input name="temp_shaderInt16" type="checkbox" checked/>
+{% else %}<input name="temp_shaderInt16" type="checkbox" />
+{% endif %}Shader_Int16<br/>
+{% if temp_sparseBinding %}<input name="temp_sparseBinding" type="checkbox" checked/>
+{% else %}<input name="temp_sparseBinding" type="checkbox" />
+{% endif %}Sparse_Binding<br/>
+{% if temp_textureCompressionETC2 %}<input name="temp_textureCompressionETC2" type="checkbox" checked/>
+{% else %}<input name="temp_textureCompressionETC2" type="checkbox" />
+{% endif %}Texture_CompressionETC2<br/>
+{% if temp_vertexPipelineStoresAndAtomic %}<input name="temp_vertexPipelineStoresAndAtomic" type="checkbox" checked/>
+{% else %}<input name="temp_vertexPipelineStoresAndAtomic" type="checkbox" />
+{% endif %}VertexPipelineStoresAndAtomic<br/>
+
+<br/>
+
+<input type="submit" value="Cancel" name="search_func"/>
+<input type="submit" value="Search" name="search_func"/>
+
+</form>
+<br/>
+<table><thead>
+<tr><th colspan="6">ADDED CONTENT</th></tr>
+<tr>
+  <td>NAME</td>
+  <td>MANUFACTURER<td>
+  <td>DATE</td>
+</tr>
+</thead>
+  <tbody>
+
+    {% if gpu_arr|length > 0 %}
+
+     {% for gpu in gpu_arr %}
+
+    <tr>
+      <td><a href="/add_func?gpu_name={{ gpu.name }}">{{ gpu.name }}</a></td>
+      <td>{{ gpu.manufacturer }}</td>
+      <td>{{ gpu.date }}</td>
+    </tr>
+
+     {% endfor %}
+
+     {% else %}
+
+     <tr>
+       <th colspan="6">No GPU's found</th>
+       </tr>
+
+       {% endif %}
+
+       </tbody>
+      </table>
+
+</body>
+</html>

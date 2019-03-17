@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>User login/logout with datastore</title>
+</head>
+<body>
+  {% if user %}
+  <h1>GPU DATABASE
+  <button onclick="location.href='{{ url }}'" type="button">LOGOUT</button></h1>
+
+  <p style="text-align:center;">User ID: {{ user.email()}}
+  <button onclick="location.href='/add_func'" type="button">
+  Add Content
+  </button>
+  </h1>
+  </p>
+
+<form style="text_align: center;" method="get">
+
+{% if temp_geometryShader %}<input name="temp_geometryShader" type="checkbox" checked/>
+{% else %}<input name="temp_geometryShader" type="checkbox" />
+{% endif %}Geometry_Shader<br/>
+{% if temp_tesselationShader %}<input name="temp_tesselationShader" type="checkbox" checked/>
+{% else %}<input name="temp_tesselationShader" type="checkbox" />
+{% endif %}Tesselation_Shader<br/>
+{% if temp_shaderInt16 %}<input name="temp_shaderInt16" type="checkbox" checked/>
+{% else %}<input name="temp_shaderInt16" type="checkbox" />
+{% endif %}Shader_Int16<br/>
+{% if temp_sparseBinding %}<input name="temp_sparseBinding" type="checkbox" checked/>
+{% else %}<input name="temp_sparseBinding" type="checkbox" />
+{% endif %}Sparse_Binding<br/>
+{% if temp_textureCompressionETC2 %}<input name="temp_textureCompressionETC2" type="checkbox" checked/>
+{% else %}<input name="temp_textureCompressionETC2" type="checkbox" />
+{% endif %}Texture_CompressionETC2<br/>
+{% if temp_vertexPipelineStoresAndAtomic %}<input name="temp_vertexPipelineStoresAndAtomic" type="checkbox" checked/>
+{% else %}<input name="temp_vertexPipelineStoresAndAtomic" type="checkbox" />
+{% endif %}VertexPipelineStoresAndAtomic<br/>
+
+</br>
+
+<input type="submit" value="Cancel" name="search_func"/>
+<input type="submit" value="Search" name="search_func"/>
+
+</form>
+</br>
+
+<table align="center" border=1>
+  <thead>
+  <tr>
+    <td>NAME</td>
+    <td>MANUFACTURER</td>
+    <td>DATE</td>
+    <td>COMPARE GPU</td>
+  </tr></thead>
+
+  <tbody>
+
+    {% if gpu_arr|length > 0 %}
+
+    {% for mygpu in gpu_arr %}
+
+    <tr>
+        <td><a href="/add_func?gpu_name={{ mygpu.key.id() }}">{{ mygpu.name }}</a></td>
+        <td>{{ mygpu.manufacturer }}</td>
+        <td>{{ mygpu.date_issued }}</td>
+
+      <td><form method="get" action="/compare_func">
+        <select id="mySelect"name="selected_processor">
+          <option name="">Select</option>
+          {% for select_processor in gpu_arr %}
+          {% if select_processor.name != mygpu.name %}
+          <option value="{{select_processor.name}}">{{select_processor.name}}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+          <input type="hidden" name="current_processor" value="{{mygpu.name}}">
+          <input type="submit" id="myselect" value="compare" onclick='showmessage()'/>
+
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+
+  {% else %}
+
+  <tr>
+    <th colspan="6">NO GPU's found</th>
+  </tr>
+
+  {% endif %}
+</tbody>
+</table>
+
+{% else %}
+ <h1>GPU DATABASE
+ <button onclick="location.href='{{ url }}'" type="button">
+ LOGIN</button></h1>
+ <p style="text-align: center;">login to proceed</p>
+{% endif %}
+<script type="text/javascript">
+			function showmessage(){
+				alert("Make sure to select GPU from dropdown.");
+			}
+		</script>
+
+</body>
+</html>

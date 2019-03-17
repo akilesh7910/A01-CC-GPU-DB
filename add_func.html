@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta charset="UTF-8"
+
+
+    </head>
+    <body>
+    <h3>CONTENTS</h3>
+
+  <form action="/add_func" method="post">
+
+  <div >
+            NAME:
+        </div>
+        <div>
+            <input name="name" type="text" value= {{selected_gpu.name}}> <br />
+
+    </div>
+      <div>
+
+            Manufacture Name:
+        </div>
+        <div>
+            <input name="manufacturer" type="text" value="{{selected_gpu.manufacturer}}"/> <br />
+
+    </div>
+
+    <div>
+              Date Issued:
+        </div>
+
+            <input name="date_issued" type="date" value="{{selected_gpu.date_issued}}"/> <br />
+        </div>
+    </div>
+    <input type="hidden" value="{{gpu_name}}" name="gpu_name"/>
+
+    <br/><h3>GPU FEATURES:</h3>
+
+    {% if selected_gpu.geometryShader %}<input name="temp_geometryShader" type="checkbox" checked/>
+    {% else %}<input name="temp_geometryShader" type="checkbox" />
+    {% endif %}Geometry_Shader<br/>
+    {% if selected_gpu.tesselationShader %}<input name="temp_tesselationShader" type="checkbox" checked/>
+    {% else %}<input name="temp_tesselationShader" type="checkbox" />
+    {% endif %}Tesselation_Shader<br/>
+    {% if selected_gpu.shaderInt16 %}<input name="temp_shaderInt16" type="checkbox" checked/>
+    {% else %}<input name="temp_shaderInt16" type="checkbox" />
+    {% endif %}Shader_Int16<br/>
+    {% if selected_gpu.sparseBinding %}<input name="temp_sparseBinding" type="checkbox" checked/>
+    {% else %}<input name="temp_sparseBinding" type="checkbox" />
+    {% endif %}Sparse_Binding<br/>
+    {% if selected_gpu.textureCompressionETC2 %}<input name="temp_textureCompressionETC2" type="checkbox" checked/>
+    {% else %}<input name="temp_textureCompressionETC2" type="checkbox" />
+    {% endif %}Texture_CompressionETC2<br/>
+    {% if selected_gpu.vertexPipelineStoresAndAtomic %}<input name="temp_vertexPipelineStoresAndAtomic" type="checkbox" checked/>
+    {% else %}<input name="temp_vertexPipelineStoresAndAtomic" type="checkbox" />
+    {% endif %}vertexPipelineStoresAndAtomic<br/>
+
+    <input type="submit" value="Cancel" name="cancel"/>
+    <input type="submit" value="{{button_action}}" name="add_function" />
+
+  </form>
+
+</body>
+</html>
